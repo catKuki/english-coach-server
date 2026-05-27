@@ -26,7 +26,7 @@ app.get('/hello', (req, res) => {
   res.send('Hello World!');
 });
 app.post('/send-message', (req, res) => {
-  const message = req.body.message;
+    const { name, phone } = req.body;
   bot.sendMessage(chatId, message)
     .then(() => {
       res.status(200).send('Message sent successfully');
