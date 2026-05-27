@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 require('dotenv').config();
+const cors = require('cors');
 const TelegramBot = require('node-telegram-bot-api');
 const PORT = 3000;
 const bodyParser = require('body-parser');
@@ -8,6 +9,7 @@ const TOKEN = process.env.TOKEN;
 const bot = new TelegramBot(TOKEN, { polling: true });
 const chatId = process.env.CHAT_ID;
 app.use(bodyParser.json());
+app.use(cors());
 bot.on('message', (msg) => {
   const chatId = msg.chat.id;
   const messageText = msg.text;
